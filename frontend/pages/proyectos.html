@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Información Institucional | Colegio San Martin</title>
+    <title>Proyectos Destacados | Colegio San Martin</title>
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -26,13 +26,12 @@
             <nav class="nav-links">
                 <ul>
                     <li><a href="index-secundaria.html">Inicio</a></li>
-                    <li><a href="institucion.html" class="active">Institución</a></li>
+                    <li><a href="institucion.html">Institución</a></li>
                     <li><a href="galeria.html">Galeria</a></li>
-                    <li><a href="proyectos.html">Proyectos</a></li>
+                    <li><a href="proyectos.html" class="active">Proyectos</a></li>
                     <li><a href="#contacto">Contacto</a></li>
                 </ul>
             </nav>
-
 
             <div class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
@@ -40,89 +39,82 @@
         </div>
     </header>
 
-    <section class="inst-hero">
+    <section class="projects-hero">
         <div class="container">
-            <h1>Institucional e Info útil</h1>
-            <p>Información útil para nuestra comunidad educativa</p>
+            <h1>Proyectos de Alumnos</h1>
+            <p>Innovación, creatividad y compromiso en cada trabajo</p>
         </div>
     </section>
 
     <div class="container">
-        <div class="info-grid">
-            <!-- Uniform Section -->
-            <section class="uniform-section">
-                <h2><i class="fas fa-tshirt"></i> Reglamento de Uniforme</h2>
-
-                <div class="uniform-list">
-                    <h3>Uniformes para Secundario</h3>
-                    <ul>
-                        <li>Pantalón negro de jean</li>
-                        <li>Chomba o remera con logo</li>
-                        <li>Buzo o suéter reglamentario</li>
-                        <li>Zapatos o zapatillas (B/N)</li>
-                        <li>Campera reglamentaria</li>
-                    </ul>
+        <div class="projects-grid">
+            <!-- Project 1 -->
+            <article class="project-card">
+                <div class="project-img">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=800"
+                        alt="Proyecto Robótica">
+                    <span class="project-badge">Ciencia y Tecnología</span>
                 </div>
-
-                <div class="uniform-list">
-                    <h3>Educación Física</h3>
-                    <ul>
-                        <li>Pantalón negro jogging</li>
-                        <li>Remera con logotipo</li>
-                        <li>Buzo reglamentario</li>
-                        <li>Medias y zapatillas blancas</li>
-                    </ul>
+                <div class="project-content">
+                    <h3>Brazo Robótico Autónomo</h3>
+                    <p>Desarrollo de un prototipo funcional utilizando Arduino y sensores ultrasónicos para la
+                        clasificación de residuos.</p>
+                    <div class="project-meta">
+                        <div class="project-author">
+                            <i class="fas fa-user-circle"></i>
+                            <span>6to Año - Orientación Ciencias</span>
+                        </div>
+                        <a href="#" class="view-project">Leer más <i class="fas fa-arrow-right"></i></a>
+                    </div>
                 </div>
+            </article>
 
-                <div class="note-alert">
-                    <i class="fas fa-exclamation-circle"></i>
-                    IMPORTANTE: Todo debe tener el nombre del alumno, incluyendo el ABRIGO.
+            <!-- Project 2 -->
+            <article class="project-card">
+                <div class="project-img">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
+                        alt="Proyecto Economía">
+                    <span class="project-badge">Economía y Gestión</span>
                 </div>
-            </section>
-
-            <!-- Downloads Section -->
-            <aside class="downloads-section">
-                <h2><i class="fas fa-file-pdf"></i> Descargas</h2>
-
-                <a href="../assets/download/planjurisdiccional2021.pdf" download="planjurisdiccional2021.pdf"
-                    class="download-item">
-                    <div class="download-info">
-                        <i class="far fa-file-pdf"></i>
-                        <span>Plan Jurisdiccional 2021</span>
+                <div class="project-content">
+                    <h3>Simulador de MicroPyME</h3>
+                    <p>Un plan de negocios completo para una cooperativa escolar de productos sustentables, incluyendo
+                        análisis financiero.</p>
+                    <div class="project-meta">
+                        <div class="project-author">
+                            <i class="fas fa-user-circle"></i>
+                            <span>5to Año - Orientación Economía</span>
+                        </div>
+                        <a href="#" class="view-project">Leer más <i class="fas fa-arrow-right"></i></a>
                     </div>
-                    <i class="fas fa-download download-btn"></i>
-                </a>
+                </div>
+            </article>
 
-                <a href="../assets/download/reglamentointernosecundario.pdf" download="reglamentointernosecundario.pdf"
-                    class="download-item">
-                    <div class="download-info">
-                        <i class="far fa-file-pdf"></i>
-                        <span>Reglamento Interno</span>
+            <!-- Project 3 -->
+            <article class="project-card">
+                <div class="project-img">
+                    <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&q=80&w=800"
+                        alt="Proyecto Arte">
+                    <span class="project-badge">Artes Visuales</span>
+                </div>
+                <div class="project-content">
+                    <h3>Mural por la Diversidad</h3>
+                    <p>Intervención artística colectiva en el patio central que representa los valores de integración y
+                        respeto de nuestra institución.</p>
+                    <div class="project-meta">
+                        <div class="project-author">
+                            <i class="fas fa-user-circle"></i>
+                            <span>4to Año - Taller de Arte</span>
+                        </div>
+                        <a href="#" class="view-project">Leer más <i class="fas fa-arrow-right"></i></a>
                     </div>
-                    <i class="fas fa-download download-btn"></i>
-                </a>
-
-                <a href="../assets/download/regimenacademico2011.pdf" download="regimenacademico2011.pdf"
-                    class="download-item">
-                    <div class="download-info">
-                        <i class="far fa-file-pdf"></i>
-                        <span>Régimen Académico 2011</span>
-                    </div>
-                    <i class="fas fa-download download-btn"></i>
-                </a>
-
-                <a href="../assets/download/decreto22992011.pdf" download="decreto22992011.pdf" class="download-item">
-                    <div class="download-info">
-                        <i class="far fa-file-pdf"></i>
-                        <span>Nuevo Reglamento de Instituciones Educativas (decreto)</span>
-                    </div>
-                    <i class="fas fa-download download-btn"></i>
-                </a>
-            </aside>
+                </div>
+            </article>
         </div>
     </div>
 
-    <footer class="main-footer">
+
+        <footer class="main-footer">
         <div class="container footer-grid">
             <div class="footer-brand">
                 <div class="logo-icon" style="background-color: var(--white); color: var(--primary-color);">
@@ -167,8 +159,7 @@
         </div>
     </footer>
 
-    <!-- Footer logic similar to index-secundaria would go here, omitting for brevity in this step but usually kept for consistency -->
-
+    <!-- Scripts -->
     <script>
         // Header scroll effect
         window.addEventListener('scroll', () => {
