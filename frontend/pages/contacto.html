@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto | Colegio San Martin DIPREGEP N°5682</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- EmailJS SDK -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("YOUR_PUBLIC_KEY"); // Placeholder for user to fill
+        })();
+    </script>
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container nav-container">
+            <a href="../../index.html" class="brand">
+                <div class="logo-icon">
+                    <i class="fas fa-university"></i>
+                </div>
+                <div class="brand-text">
+                    <span class="brand-logo">COLEGIO SAN MARTIN</span>
+                    <span class="brand-tagline">DIPREGEP N°5682 EDUCACIÓN DE CALIDAD</span>
+                </div>
+            </a>
+
+            <nav class="nav-links">
+                <ul>
+                    <li><a href="index-secundaria.html">Inicio</a></li>
+                    <li><a href="institucion.html">Institución</a></li>
+                    <li><a href="galeria.html">Galeria</a></li>
+                    <li><a href="proyectos.html">Proyectos</a></li>
+                    <li><a href="contacto.html" class="active">Contacto</a></li>
+                </ul>
+            </nav>
+
+            <div class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <section class="contact-hero">
+        <div class="container">
+            <h1>Contacto</h1>
+            <p>Estamos aquí para escucharte y responder tus consultas</p>
+        </div>
+    </section>
+
+    <main class="contact-container container">
+        <div class="contact-grid">
+            <!-- Contact Info -->
+            <div class="contact-info">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="info-text">
+                        <h3>Ubicación</h3>
+                        <p>Las Orcadas del Sur 1570, B1888 CFL, Buenos Aires</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="info-text">
+                        <h3>Teléfono</h3>
+                        <p>4255-6935</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="info-text">
+                        <h3>Email</h3>
+                        <p>colegio-sanmartin@speedy.com.ar</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="info-text">
+                        <h3>Horarios de Secretaría</h3>
+                        <p>Lunes a Viernes: 8:00 - 12:00 y 13:30 - 17:30</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form-wrapper">
+                <form id="contact-form" class="premium-form">
+                    <h2>Envianos un mensaje</h2>
+                    <p>Completá el formulario y nos pondremos en contacto a la brevedad.</p>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="user_name">Nombre Completo</label>
+                            <input type="text" id="user_name" name="user_name" placeholder="Tu nombre" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="user_email">Correo Electrónico</label>
+                            <input type="email" id="user_email" name="user_email" placeholder="tu@email.com" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">Asunto</label>
+                        <input type="text" id="subject" name="subject" placeholder="Motivo de tu consulta" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Mensaje</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Escribí aquí tu mensaje..."
+                            required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block" id="submit-btn">
+                        <span>Enviar Consulta</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+
+                    <div id="form-status" class="form-status"></div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Map Section -->
+        <div class="map-section">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3278.4831647480574!2d-58.2612!3d-34.7891!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a32e7f6f7e7e7f%3A0x7f7e7f7e7f7e7f7e!2sLas%20Orcadas%20del%20Sur%201570%2C%20B1888%20CFL%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1620000000000!5m2!1ses!2sar"
+                width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <div class="logo-icon" style="background-color: var(--white); color: var(--primary-color);">
+                    <i class="fas fa-university"></i>
+                </div>
+                <h3>Colegio San Martin</h3>
+                <p>Institución educativa de gestión comprometida con la formación integral, equilibrando la
+                    excelencia académica con el desarrollo humano y social de nuestros estudiantes.</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/colegio.sanmartin?igsh=N3R3cHZqMWtwOGt0"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://youtube.com/@colegiosanmartinsecundario2977?si=GORW4zhDg16n71r4"><i
+                            class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+
+
+            <div class="footer-links">
+                <h3>Institucional</h3>
+                <ul>
+                    <li><a href="#">Proyecto Educativo</a></li>
+                    <li><a href="#">Equipo Docente</a></li>
+                    <li><a href="#">Calendario Escolar</a></li>
+                    <li><a href="#">Cooperadora</a></li>
+                    <li><a href="#">Novedades</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2025 Colegio San Martin. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.main-header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // EmailJS Integration
+        const contactForm = document.getElementById('contact-form');
+        const statusDiv = document.getElementById('form-status');
+        const submitBtn = document.getElementById('submit-btn');
+
+        contactForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            // Validate public key placeholder
+            if (emailjs._publicKey === "YOUR_PUBLIC_KEY") {
+                statusDiv.innerText = "Error: EmailJS no está configurado correctamente (falta Public Key).";
+                statusDiv.className = "form-status error";
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span>Enviando...</span> <i class="fas fa-circle-notch fa-spin"></i>';
+            statusDiv.innerText = "Enviando mensaje...";
+            statusDiv.className = "form-status info";
+
+            // emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+            // .then(function() {
+            //     statusDiv.innerText = "✅ ¡Mensaje enviado con éxito! Nos contactaremos pronto.";
+            //     statusDiv.className = "form-status success";
+            //     contactForm.reset();
+            //     submitBtn.disabled = false;
+            //     submitBtn.innerHTML = '<span>Enviar Consulta</span> <i class="fas fa-paper-plane"></i>';
+            // }, function(error) {
+            //     statusDiv.innerText = "❌ Falló el envío: " + JSON.stringify(error);
+            //     statusDiv.className = "form-status error";
+            //     submitBtn.disabled = false;
+            //     submitBtn.innerHTML = '<span>Enviar Consulta</span> <i class="fas fa-paper-plane"></i>';
+            // });
+
+            // Since it's a demo/base, I'll alert the user about the keys if they try to click
+            // For real functionality, the user must provide SERVICE_ID and TEMPLATE_ID
+            setTimeout(() => {
+                statusDiv.innerText = "⚠️ Nota: EmailJS requiere SERVICE_ID y TEMPLATE_ID para funcionar. Por favor, configúralos en el script.";
+                statusDiv.className = "form-status warning";
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<span>Enviar Consulta</span> <i class="fas fa-paper-plane"></i>';
+            }, 1500);
+        });
+    </script>
+</body>
+
+</html>
