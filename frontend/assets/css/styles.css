@@ -845,6 +845,44 @@ button {
     margin-bottom: 10px;
 }
 
+/* Ideario Section */
+.ideario-section {
+    padding: 80px 0 40px 0;
+    background-color: var(--white);
+    position: relative;
+    margin-bottom: 60px;
+    /* Strong spacing before the next grid */
+}
+
+.ideario-content {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.ideario-content p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--text-gray);
+    margin-bottom: 25px;
+}
+
+.ideario-content p:first-of-type {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.ideario-content p:last-child {
+    margin-bottom: 0;
+    padding: 30px;
+    background-color: var(--bg-light);
+    border-radius: 15px;
+    border-left: 5px solid var(--primary-color);
+    text-align: left;
+    font-style: italic;
+}
+
 .info-grid {
     display: grid;
     grid-template-columns: 2fr 1fr;
