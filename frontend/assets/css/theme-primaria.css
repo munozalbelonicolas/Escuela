@@ -1,0 +1,8 @@
+:root {
+    /* Primary School Red Palette */
+    --primary-color: #d32f2f;
+    --primary-rgb: 211, 47, 47;
+    --primary-dark: #b71c1c;
+    --primary-light: #ef5350;
+    --accent-color: #ff5252;
+}
