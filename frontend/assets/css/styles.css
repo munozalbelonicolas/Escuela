@@ -764,8 +764,70 @@ button {
 }
 
 @media (max-width: 768px) {
+    .main-header {
+        height: auto !important;
+        padding: 15px 0;
+        position: absolute;
+        /* Header scrolls with page, button stays fixed */
+    }
+
+    .nav-container {
+        justify-content: center;
+        padding: 0 60px 0 20px;
+        /* Leave space for the floating button */
+    }
+
+    .brand {
+        flex-direction: column;
+        gap: 5px;
+        text-align: center;
+    }
+
+    .brand-text {
+        align-items: center;
+    }
+
+    .brand-logo {
+        font-size: 1.1rem;
+        white-space: normal;
+        /* Allow name to wrap */
+        line-height: 1.2;
+    }
+
+    .brand-tagline {
+        font-size: 0.65rem;
+    }
+
+    .logo-img {
+        height: 35px;
+    }
+
     .mobile-menu-btn {
-        display: block;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 15px;
+        right: 15px;
+        z-index: 2001;
+        background: var(--primary-color);
+        color: var(--white);
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        border: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .hero-text h1 {
+        font-size: 1.8rem;
+        line-height: 1.2;
+        text-align: center;
+    }
+
+    .hero-cards {
+        grid-template-columns: repeat(2, 1fr);
+        margin-top: 30px;
     }
 
     .nav-links {
@@ -820,6 +882,17 @@ button {
     .cta-item {
         flex-direction: column;
         gap: 10px;
+    }
+}
+
+@media (max-width: 500px) {
+    .hero-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-card {
+        height: auto;
+        min-height: 250px;
     }
 }
 
