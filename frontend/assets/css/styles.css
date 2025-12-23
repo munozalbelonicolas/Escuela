@@ -839,21 +839,29 @@ button {
 
     .brand-text {
         align-items: center;
+        max-width: calc(100vw - 100px);
     }
 
     .brand-logo {
-        font-size: 1.1rem;
+        font-size: 0.95rem;
         white-space: normal;
         /* Allow name to wrap */
         line-height: 1.2;
+        text-align: center;
+        word-break: break-word;
     }
 
     .brand-tagline {
-        font-size: 0.65rem;
+        font-size: 0.6rem;
+        text-align: center;
     }
 
     .logo-img {
         height: 35px;
+    }
+    
+    .hero-content {
+        padding: 0 10px;
     }
 
     .mobile-menu-btn {
@@ -880,8 +888,15 @@ button {
     }
 
     .hero-cards {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
         margin-top: 30px;
+        padding: 0 10px;
+        gap: 15px;
+    }
+    
+    .hero-card {
+        height: auto;
+        min-height: 220px;
     }
 
     .nav-links {
@@ -936,17 +951,6 @@ button {
     .cta-item {
         flex-direction: column;
         gap: 10px;
-    }
-}
-
-@media (max-width: 500px) {
-    .hero-cards {
-        grid-template-columns: 1fr;
-    }
-
-    .hero-card {
-        height: auto;
-        min-height: 250px;
     }
 }
 
