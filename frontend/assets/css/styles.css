@@ -702,6 +702,8 @@ button {
 }
 
 .footer-grid.compact {
+    display: flex;
+    justify-content: center;
     padding-bottom: 20px;
 }
 
