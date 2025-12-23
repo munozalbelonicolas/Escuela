@@ -65,6 +65,7 @@ button {
 }
 
 .container {
+    
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
@@ -307,6 +308,25 @@ button {
 .hero-btns {
     display: flex;
     gap: 20px;
+}
+
+/* Instagram Section */
+.instagram-section {
+    max-width: 1200px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.instagram-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--primary-color);
+}
+
+.instagram-grid {
+    display: block;
+    width: 100%;
 }
 
 /* Hero Cards */
