@@ -59,45 +59,28 @@
             </div>
         </div>
     </main>
-
-    <style>
-        .admin-link {
-            display: inline-block;
-            margin-top: 15px;
-            color: rgba(255, 255, 255, 0.4);
-            font-size: 0.7rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .admin-link:hover {
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .admin-link i {
-            margin-right: 5px;
-        }
-    </style>
 </body>
 <!-- Footer -->
 <footer class="main-footer compact">
-    <div class="container footer-grid compact">
-        <div class="footer-awards inline">
-            <h3>Reconocimiento:</h3>
-            <a class="micole-award" href="https://www.micole.net/ar/buenos-aires/mejores-institutos-de-florencio-varela"
-                target="_blank">
-                <img src="./frontend/assets/img/micole-logo-blanco.png" alt="Premio MiCole">
-            </a>
-        </div>
-    </div>
     <div class="footer-bottom">
-        <div class="container">
-            <p>&copy; 2025 Colegio San Martin. Todos los derechos reservados.</p>
-            <p>Desarrollado por <a href="https://nilotech.online/" target="_blank">Nilo Tech</a></p>
-            <!-- Admin Link (discreet) -->
-            <a href="frontend/pages/admin-login.html" class="admin-link" title="Panel de Administración">
-                <i class="fas fa-cog"></i> Administración
-            </a>
+        <div class="container footer-bottom-grid">
+            <div class="footer-col-left">
+                <a href="frontend/pages/admin-login.html" class="admin-link" title="Panel de Administración">
+                    <i class="fas fa-cog"></i> Administración
+                </a>
+            </div>
+            <div class="footer-col-center">
+                <p>&copy; 2025 Colegio San Martin. Todos los derechos reservados.</p>
+                <p>Powered by <a href="https://nilotech.online/" target="_blank">Nilo-Tech</a></p>
+            </div>
+            <div class="footer-col-right">
+                <span class="recognition-label">Reconocimiento</span>
+                <a class="micole-award"
+                    href="https://www.micole.net/ar/buenos-aires/mejores-institutos-de-florencio-varela"
+                    target="_blank">
+                    <img src="./frontend/assets/img/micole-logo-blanco.png" alt="Premio MiCole">
+                </a>
+            </div>
         </div>
     </div>
 </footer>

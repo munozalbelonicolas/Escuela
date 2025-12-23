@@ -65,14 +65,14 @@ button {
 }
 
 .container {
-        max-width: 1200px;
+    max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
 /* Sections Branding */
 .section-title {
-    text-align: center; 
+    text-align: center;
     margin-bottom: 50px;
 }
 
@@ -696,9 +696,9 @@ button {
 .footer-grid {
     display: grid;
     grid-template-columns: 1.5fr 1fr 1fr;
-    align-items: center;
+    align-items: start;
     gap: 40px;
-    padding-bottom: 20px;
+    padding: 40px 0 20px;
 }
 
 .footer-grid.compact {
@@ -848,6 +848,74 @@ button {
     font-size: 0.9rem;
 }
 
+.footer-bottom-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.footer-bottom-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    align-items: center;
+    gap: 20px;
+}
+
+.footer-col-left {
+    text-align: left;
+}
+
+.footer-col-center {
+    text-align: center;
+}
+
+.footer-col-right {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.footer-left {
+    text-align: left;
+}
+
+.footer-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.recognition-label {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.85rem;
+}
+
+.footer-right .micole-award img,
+.footer-col-right .micole-award img {
+    max-height: 35px;
+}
+
+.admin-link {
+    display: inline-block;
+    margin-top: 15px;
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.7rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.admin-link:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.admin-link i {
+    margin-right: 5px;
+}
+
 /* Responsiveness */
 @media (max-width: 1024px) {
     .hero-text h1 {
@@ -909,7 +977,7 @@ button {
     .logo-img {
         height: 35px;
     }
-    
+
     .hero-content {
         padding: 0 10px;
     }
@@ -936,18 +1004,18 @@ button {
         line-height: 1.2;
         text-align: center;
     }
-    
+
     .hero {
         height: auto;
         min-height: auto;
         overflow: visible;
         padding-bottom: 60px;
     }
-    
+
     .hero-text p {
         text-align: center;
     }
-    
+
     .hero-btns {
         justify-content: center;
         flex-wrap: wrap;
@@ -962,7 +1030,7 @@ button {
         max-width: 100%;
         overflow: hidden;
     }
-    
+
     .hero-card {
         height: auto;
         min-height: 220px;
