@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Galería | Admin</title>
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .admin-header {
+            background: var(--primary-color);
+            padding: 15px 0;
+            color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .admin-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .admin-brand {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .admin-brand i {
+            font-size: 1.5rem;
+        }
+
+        .admin-brand h1 {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .admin-user {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .admin-user span {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        .logout-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .logout-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .admin-container {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .admin-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+        }
+
+        .upload-panel {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+        }
+
+        .upload-panel h2 {
+            color: var(--primary-color);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .upload-preview {
+            width: 100%;
+            height: 200px;
+            background: var(--bg-light);
+            border: 2px dashed #ccc;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .upload-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .upload-preview.empty i {
+            font-size: 3rem;
+            color: #ccc;
+            margin-bottom: 10px;
+        }
+
+        .upload-preview.empty p {
+            color: var(--text-gray);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .btn-upload-image {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+        }
+
+        .btn-publish {
+            width: 100%;
+            padding: 15px;
+        }
+
+        .photos-panel {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .photos-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .photos-header h2 {
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .photos-count {
+            background: var(--bg-light);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--text-gray);
+        }
+
+        .photos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .photo-card {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            aspect-ratio: 1;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .photo-card .photo-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .photo-card:hover .photo-overlay {
+            opacity: 1;
+        }
+
+        .photo-overlay .photo-title {
+            color: var(--white);
+            font-size: 0.85rem;
+            text-align: center;
+            padding: 0 10px;
+            margin-bottom: 10px;
+        }
+
+        .delete-btn {
+            background: #dc2626;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .delete-btn:hover {
+            background: #b91c1c;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 50px;
+            color: var(--text-gray);
+        }
+
+        .empty-state i {
+            font-size: 4rem;
+            opacity: 0.3;
+            margin-bottom: 15px;
+        }
+
+        .upload-status {
+            text-align: center;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .upload-status.success {
+            background: #d1fae5;
+            color: #059669;
+        }
+
+        .upload-status.error {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .loading-auth {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .loading-auth i {
+            font-size: 3rem;
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 900px) {
+            .admin-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .upload-panel {
+                position: relative;
+                top: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Loading State -->
+    <div id="loading-auth" class="loading-auth">
+        <i class="fas fa-spinner fa-spin"></i>
+        <p>Verificando sesión...</p>
+    </div>
+
+    <!-- Main Content (hidden until authenticated) -->
+    <div id="admin-content" style="display: none;">
+        <header class="admin-header">
+            <div class="container admin-nav">
+                <div class="admin-brand">
+                    <i class="fas fa-images"></i>
+                    <h1>Panel de Galería</h1>
+                </div>
+                <div class="admin-user">
+                    <span id="user-email">usuario@email.com</span>
+                    <button id="logout-btn" class="logout-btn">
+                        <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <main class="admin-container">
+            <div class="admin-grid">
+                <!-- Upload Panel -->
+                <div class="upload-panel">
+                    <h2><i class="fas fa-cloud-upload-alt"></i> Subir Imagen</h2>
+
+                    <div id="upload-preview" class="upload-preview empty">
+                        <i class="fas fa-image"></i>
+                        <p>Vista previa</p>
+                    </div>
+
+                    <div id="upload-status" class="upload-status" style="display: none;"></div>
+
+                    <form id="upload-form">
+                        <div class="form-group">
+                            <label for="img-title">Título *</label>
+                            <input type="text" id="img-title" placeholder="Ej: Acto del 25 de Mayo" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="img-desc">Descripción</label>
+                            <textarea id="img-desc" rows="2" placeholder="Breve descripción (opcional)"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="img-level">Nivel Educativo *</label>
+                            <select id="img-level" required>
+                                <option value="">Seleccionar nivel</option>
+                                <option value="jardin">Jardín</option>
+                                <option value="primaria">Primaria</option>
+                                <option value="secundaria">Secundaria</option>
+                                <option value="general">General (todos)</option>
+                            </select>
+                        </div>
+
+                        <button type="button" id="select-image-btn" class="btn btn-outline btn-upload-image">
+                            <i class="fas fa-image"></i> Seleccionar Imagen
+                        </button>
+
+                        <button type="submit" id="publish-btn" class="btn btn-primary btn-publish" disabled>
+                            <i class="fas fa-upload"></i> Publicar en Galería
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Photos List -->
+                <div class="photos-panel">
+                    <div class="photos-header">
+                        <h2><i class="fas fa-th"></i> Imágenes Publicadas</h2>
+                        <span id="photos-count" class="photos-count">0 fotos</span>
+                    </div>
+
+                    <div id="photos-grid" class="photos-grid">
+                        <div class="empty-state">
+                            <i class="fas fa-images"></i>
+                            <p>Aún no hay imágenes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Cloudinary Widget -->
+    <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+
+    <!-- Firebase & App Logic -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, query, orderBy, onSnapshot, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { firebaseConfig, cloudinaryConfig } from "../assets/js/firebase-config.js";
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        // DOM Elements
+        const loadingAuth = document.getElementById('loading-auth');
+        const adminContent = document.getElementById('admin-content');
+        const userEmailSpan = document.getElementById('user-email');
+        const logoutBtn = document.getElementById('logout-btn');
+        const uploadPreview = document.getElementById('upload-preview');
+        const uploadStatus = document.getElementById('upload-status');
+        const uploadForm = document.getElementById('upload-form');
+        const selectImageBtn = document.getElementById('select-image-btn');
+        const publishBtn = document.getElementById('publish-btn');
+        const photosGrid = document.getElementById('photos-grid');
+        const photosCount = document.getElementById('photos-count');
+
+        let uploadedImageUrl = "";
+
+        // Auth State Listener
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                loadingAuth.style.display = 'none';
+                adminContent.style.display = 'block';
+                userEmailSpan.textContent = user.email;
+                loadPhotos();
+            } else {
+                window.location.href = "admin-login.html";
+            }
+        });
+
+        // Logout
+        logoutBtn.addEventListener('click', async () => {
+            try {
+                await signOut(auth);
+                window.location.href = "admin-login.html";
+            } catch (error) {
+                console.error("Logout error:", error);
+            }
+        });
+
+        // Cloudinary Widget
+        const cloudinaryWidget = cloudinary.createUploadWidget({
+            cloudName: cloudinaryConfig.cloudName,
+            uploadPreset: cloudinaryConfig.uploadPreset,
+            sources: ['local', 'url', 'camera'],
+            multiple: false,
+            clientAllowedFormats: ["png", "jpg", "jpeg", "webp"],
+            maxFileSize: 10000000, // 10MB
+            cropping: false,
+        }, (error, result) => {
+            if (!error && result && result.event === "success") {
+                uploadedImageUrl = result.info.secure_url;
+                uploadPreview.innerHTML = `<img src="${uploadedImageUrl}" alt="Preview">`;
+                uploadPreview.classList.remove('empty');
+                selectImageBtn.innerHTML = '<i class="fas fa-check"></i> Imagen Seleccionada';
+                publishBtn.disabled = false;
+                showStatus("Imagen lista para publicar", "success");
+            }
+        });
+
+        selectImageBtn.addEventListener('click', () => cloudinaryWidget.open());
+
+        // Show Status Message
+        function showStatus(message, type) {
+            uploadStatus.textContent = message;
+            uploadStatus.className = `upload-status ${type}`;
+            uploadStatus.style.display = 'block';
+            setTimeout(() => {
+                uploadStatus.style.display = 'none';
+            }, 4000);
+        }
+
+        // Publish Photo
+        uploadForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            if (!uploadedImageUrl) {
+                showStatus("Primero seleccioná una imagen", "error");
+                return;
+            }
+
+            const title = document.getElementById('img-title').value;
+            const description = document.getElementById('img-desc').value;
+            const level = document.getElementById('img-level').value;
+
+            if (!level) {
+                showStatus("Seleccioná un nivel educativo", "error");
+                return;
+            }
+
+            publishBtn.disabled = true;
+            publishBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Publicando...';
+
+            try {
+                await addDoc(collection(db, "gallery"), {
+                    url: uploadedImageUrl,
+                    title: title,
+                    description: description,
+                    level: level,
+                    timestamp: new Date(),
+                    uploadedBy: auth.currentUser.email
+                });
+
+                // Reset form
+                uploadForm.reset();
+                uploadedImageUrl = "";
+                uploadPreview.innerHTML = '<i class="fas fa-image"></i><p>Vista previa</p>';
+                uploadPreview.classList.add('empty');
+                selectImageBtn.innerHTML = '<i class="fas fa-image"></i> Seleccionar Imagen';
+                publishBtn.disabled = true;
+                publishBtn.innerHTML = '<i class="fas fa-upload"></i> Publicar en Galería';
+
+                showStatus("¡Imagen publicada con éxito!", "success");
+
+            } catch (error) {
+                console.error("Error publishing:", error);
+                showStatus("Error al publicar: " + error.message, "error");
+                publishBtn.disabled = false;
+                publishBtn.innerHTML = '<i class="fas fa-upload"></i> Publicar en Galería';
+            }
+        });
+
+        // Load Photos in Real-time
+        function loadPhotos() {
+            const q = query(collection(db, "gallery"), orderBy("timestamp", "desc"));
+
+            onSnapshot(q, (querySnapshot) => {
+                const count = querySnapshot.size;
+                photosCount.textContent = `${count} foto${count !== 1 ? 's' : ''}`;
+
+                if (querySnapshot.empty) {
+                    photosGrid.innerHTML = `
+                        <div class="empty-state" style="grid-column: 1/-1;">
+                            <i class="fas fa-images"></i>
+                            <p>Aún no hay imágenes</p>
+                        </div>
+                    `;
+                    return;
+                }
+
+                photosGrid.innerHTML = "";
+
+                querySnapshot.forEach((docSnapshot) => {
+                    const item = docSnapshot.data();
+                    const photoCard = document.createElement('div');
+                    photoCard.className = 'photo-card';
+                    photoCard.innerHTML = `
+                        <img src="${item.url}" alt="${item.title}">
+                        <div class="photo-overlay">
+                            <span class="photo-title">${item.title}</span>
+                            <button class="delete-btn" data-id="${docSnapshot.id}">
+                                <i class="fas fa-trash"></i> Eliminar
+                            </button>
+                        </div>
+                    `;
+                    photosGrid.appendChild(photoCard);
+                });
+
+                // Add delete handlers
+                document.querySelectorAll('.delete-btn').forEach(btn => {
+                    btn.addEventListener('click', async (e) => {
+                        const docId = e.currentTarget.dataset.id;
+                        if (confirm("¿Estás seguro de eliminar esta imagen?")) {
+                            try {
+                                await deleteDoc(doc(db, "gallery", docId));
+                                showStatus("Imagen eliminada", "success");
+                            } catch (error) {
+                                console.error("Delete error:", error);
+                                showStatus("Error al eliminar", "error");
+                            }
+                        }
+                    });
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>

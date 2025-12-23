@@ -1,127 +1,85 @@
-// Configuración de Firebase (completar con tus datos)
+// Gallery Display Logic - Uses shared Firebase config
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getFirestore, collection, addDoc, query, orderBy, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { getFirestore, collection, query, orderBy, where, onSnapshot } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+import { firebaseConfig } from "./firebase-config.js";
 
-const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_AUTH_DOMAIN",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_STORAGE_BUCKET",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID"
-};
-
-// Inicializar Firebase
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
-// Configuración de Cloudinary
-const cloudinaryCloudName = "YOUR_CLOUD_NAME";
-const cloudinaryUploadPreset = "YOUR_UPLOAD_PRESET";
-
-let uploadedImageUrl = "";
-
-// Elementos del DOM
+// Get the gallery grid element
 const galleryGrid = document.getElementById('gallery-grid');
-const openUploadBtn = document.getElementById('open-upload');
-const closeUploadBtn = document.getElementById('close-modal');
-const uploadModal = document.getElementById('upload-modal');
-const cloudUploadBtn = document.getElementById('cloudinary-upload');
-const uploadForm = document.getElementById('upload-form');
-const saveBtn = document.getElementById('save-metadata');
-const statusMsg = document.getElementById('upload-status');
 
-// Modal Logic
-openUploadBtn.addEventListener('click', () => uploadModal.style.display = 'flex');
-closeUploadBtn.addEventListener('click', () => uploadModal.style.display = 'none');
-window.addEventListener('click', (e) => { if (e.target === uploadModal) uploadModal.style.display = 'none'; });
+// Determine which level to filter by based on the page
+function getPageLevel() {
+    const path = window.location.pathname;
+    if (path.includes('jardin')) return 'jardin';
+    if (path.includes('primaria')) return 'primaria';
+    if (path.includes('secundaria')) return 'secundaria';
+    return null; // Show all
+}
 
-// Cloudinary Widget
-const myWidget = cloudinary.createUploadWidget({
-    cloudName: cloudinaryCloudName,
-    uploadPreset: cloudinaryUploadPreset,
-    sources: ['local', 'url'],
-    multiple: false,
-    clientAllowedFormats: ["png", "jpg", "jpeg", "webp"],
-    maxFileSize: 5000000, // 5MB
-}, (error, result) => {
-    if (!error && result && result.event === "success") {
-        console.log('Done! Here is the image info: ', result.info);
-        uploadedImageUrl = result.info.secure_url;
-        statusMsg.innerHTML = `<span style="color: green;"><i class="fas fa-check"></i> Imagen lista para publicar</span>`;
-        saveBtn.disabled = false;
-        cloudUploadBtn.innerHTML = `<i class="fas fa-image"></i> Imagen seleccionada`;
+// Load images from Firestore
+function loadGallery() {
+    const level = getPageLevel();
+
+    let q;
+    if (level) {
+        // Filter by level OR show "general" images
+        q = query(
+            collection(db, "gallery"),
+            orderBy("timestamp", "desc")
+        );
+    } else {
+        q = query(collection(db, "gallery"), orderBy("timestamp", "desc"));
     }
-});
 
-cloudUploadBtn.addEventListener('click', () => myWidget.open(), false);
-
-// Guardar en Firestore
-uploadForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    
-    if (!uploadedImageUrl) return;
-
-    const title = document.getElementById('img-title').value;
-    const description = document.getElementById('img-desc').value;
-
-    try {
-        saveBtn.disabled = true;
-        saveBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Publicando...`;
-
-        await addDoc(collection(db, "gallery"), {
-            url: uploadedImageUrl,
-            title: title,
-            description: description,
-            timestamp: new Date()
+    onSnapshot(q, (querySnapshot) => {
+        // Filter client-side to include level-specific + general photos
+        const filteredDocs = [];
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            if (!level || data.level === level || data.level === 'general') {
+                filteredDocs.push(data);
+            }
         });
 
-        // Limpiar
-        uploadForm.reset();
-        uploadedImageUrl = "";
-        saveBtn.disabled = true;
-        saveBtn.innerHTML = `Publicar en Galería`;
-        cloudUploadBtn.innerHTML = `<i class="fas fa-image"></i> Seleccionar Imagen`;
-        statusMsg.innerHTML = "";
-        uploadModal.style.display = 'none';
+        if (filteredDocs.length === 0) {
+            galleryGrid.innerHTML = `
+                <div style="grid-column: 1/-1; text-align: center; padding: 50px; color: var(--text-gray);">
+                    <i class="fas fa-images fa-3x" style="opacity: 0.5;"></i>
+                    <p style="margin-top: 15px;">Aún no hay fotos en la galería.</p>
+                </div>
+            `;
+            return;
+        }
 
-        alert("¡Imagen publicada con éxito!");
+        galleryGrid.innerHTML = "";
 
-    } catch (error) {
-        console.error("Error al guardar:", error);
-        alert("Error al publicar la imagen en la base de datos.");
-        saveBtn.disabled = false;
-        saveBtn.innerHTML = `Publicar en Galería`;
-    }
-});
-
-// Cargar Imágenes en tiempo real
-const q = query(collection(db, "gallery"), orderBy("timestamp", "desc"));
-
-onSnapshot(q, (querySnapshot) => {
-    galleryGrid.innerHTML = "";
-    
-    if (querySnapshot.empty) {
-        galleryGrid.innerHTML = `
-            <div style="grid-column: 1/-1; text-align: center; padding: 50px; color: var(--text-gray);">
-                <i class="fas fa-images fa-3x" style="opacity: 0.5;"></i>
-                <p style="margin-top: 15px;">Aún no hay fotos en la galería.</p>
-            </div>
-        `;
-        return;
-    }
-
-    querySnapshot.forEach((doc) => {
-        const item = doc.data();
-        const galleryCard = `
-            <div class="gallery-item">
-                <img src="${item.url}" alt="${item.title}">
+        filteredDocs.forEach((item) => {
+            const galleryCard = document.createElement('div');
+            galleryCard.className = 'gallery-item';
+            galleryCard.innerHTML = `
+                <img src="${item.url}" alt="${item.title}" loading="lazy">
                 <div class="gallery-overlay">
                     <h4>${item.title}</h4>
                     <p>${item.description || ''}</p>
                 </div>
+            `;
+            galleryGrid.appendChild(galleryCard);
+        });
+    }, (error) => {
+        console.error("Error loading gallery:", error);
+        galleryGrid.innerHTML = `
+            <div style="grid-column: 1/-1; text-align: center; padding: 50px; color: #dc2626;">
+                <i class="fas fa-exclamation-circle fa-3x"></i>
+                <p style="margin-top: 15px;">Error al cargar la galería. Intentá recargar la página.</p>
             </div>
         `;
-        galleryGrid.innerHTML += galleryCard;
     });
-});
+}
+
+// Initialize
+if (galleryGrid) {
+    loadGallery();
+}
