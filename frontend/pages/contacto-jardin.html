@@ -8,23 +8,25 @@
 
 <head>
     <meta charset="UTF-8">
-    <!--Meta tags-->
-    <meta name="description" content="Portal Educativo | Jardin de Infantes Bichito de Luz">
-    <meta name="keywords"
-        content="portal educativo, jardin de infantes bichito de luz, educacion, jardin, primaria, secundaria">
-    <meta name="author" content="Nilo Tech - Desarrolladores Web">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contacto | Jardin de Infantes Bichito de Luz DIPREGEP N°2300</title>
+
+    <title>Contacto | Jardín de Infantes Bichito de Luz</title>
+
+    <meta name="description"
+        content="Contactate con el Jardín de Infantes Bichito de Luz. Consultas sobre inscripciones, salitas y actividades para los más pequeños.">
+    <meta name="keywords"
+        content="contacto, jardin de infantes, bichito de luz, colegio san martin, florencio varela, educacion">
+    <meta name="author" content="Nilo Tech - Desarrolladores Web">
+
+    <!-- Favicon (Opcional) -->
+    <link rel="icon" type="image/png" href="../assets/img/logojardin.PNG">
+
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="stylesheet" href="../assets/css/theme-jardin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <!-- EmailJS SDK -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function () {
-            emailjs.init("47vcgvhb2FQNRr2zE"); // Tu Public Key de EmailJS
-        })();
-    </script>
 </head>
 
 <body>
@@ -109,7 +111,8 @@
 
             <!-- Contact Form -->
             <div class="contact-form-wrapper">
-                <form id="contact-form" class="premium-form">
+                <form id="contact-form" class="premium-form" data-service-id="service_9asbnxi"
+                    data-template-id="template_bv110ij">
                     <h2>Envianos un mensaje</h2>
                     <p>Completá el formulario y nos pondremos en contacto a la brevedad.</p>
 
@@ -217,34 +220,9 @@
             }
         });
 
-        // EmailJS Integration
-        const contactForm = document.getElementById('contact-form');
-        const statusDiv = document.getElementById('form-status');
-        const submitBtn = document.getElementById('submit-btn');
-
-        contactForm.addEventListener('submit', function (event) {
-            event.preventDefault();
-
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<span>Enviando...</span> <i class="fas fa-circle-notch fa-spin"></i>';
-            statusDiv.innerText = "Enviando mensaje...";
-            statusDiv.className = "form-status info";
-
-            emailjs.sendForm('service_th3q0er', 'template_jb5gbsf', this)
-                .then(function () {
-                    statusDiv.innerText = "✅ ¡Mensaje enviado con éxito! Nos contactaremos pronto.";
-                    statusDiv.className = "form-status success";
-                    contactForm.reset();
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = '<span>Enviar Consulta</span> <i class="fas fa-paper-plane"></i>';
-                }, function (error) {
-                    statusDiv.innerText = "❌ Falló el envío: " + (error.text || JSON.stringify(error));
-                    statusDiv.className = "form-status error";
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = '<span>Enviar Consulta</span> <i class="fas fa-paper-plane"></i>';
-                });
-        });
+        // EmailJS reference is now handled by contact-handler.js
     </script>
+    <script src="../assets/js/contact-handler.js"></script>
 </body>
 
 </html>
