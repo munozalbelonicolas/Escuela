@@ -1,19 +1,25 @@
-<!--=========================================-->
-<!--Nilo Tech - Desarrolladores Web -->
-<!--@nilo.tech.online-->
-<!--https://nilotech.online/ -->
-<!--=========================================-->
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 
 <head>
+    <!--=========================================-->
+    <!--Nilo Tech - Desarrolladores Web -->
+    <!--@nilo.tech.online-->
+    <!--https://nilotech.online/ -->
+    <!--=========================================-->
     <meta charset="UTF-8">
-    <!--Meta tags-->
-    <meta name="description" content="Portal Educativo | Colegio San Martin">
-    <meta name="keywords" content="portal educativo, colegio san martin, educacion, jardin, primaria, secundaria">
-    <meta name="author" content="Nilo Tech - Desarrolladores Web">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galería de Fotos | Escuela Secundaria Don Jose de San Martin</title>
+
+    <title>Galería de Fotos | Nivel Secundario | Colegio San Martin</title>
+
+    <meta name="description"
+        content="Explorá los momentos y actividades más destacados del Nivel Secundario del Colegio San Martin en nuestra galería de fotos.">
+    <meta name="keywords" content="galería, fotos, actividades escolares, secundaria, colegio san martin">
+    <meta name="author" content="Nilo Tech - Desarrolladores Web">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../assets/img/logosecundaria.PNG">
+
     <link rel="stylesheet" href="../assets/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -46,28 +52,30 @@
         </div>
     </header>
 
-    <section class="inst-hero">
+    <main>
+        <section class="inst-hero">
+            <div class="container">
+                <h1>Nuestra Galería</h1>
+                <p>Momentos y proyectos que definen nuestra comunidad</p>
+            </div>
+        </section>
+
         <div class="container">
-            <h1>Nuestra Galería</h1>
-            <p>Momentos y proyectos que definen nuestra comunidad</p>
-        </div>
-    </section>
+            <div class="gallery-controls">
+                <div class="filter-group">
+                    <span class="text-gray">Galería de momentos especiales</span>
+                </div>
+            </div>
 
-    <div class="container">
-        <div class="gallery-controls">
-            <div class="filter-group">
-                <span class="text-gray">Galería de momentos especiales</span>
+            <div id="gallery-grid" class="gallery-grid">
+                <!-- Images will be loaded here from Firebase -->
+                <div class="gallery-loading" style="grid-column: 1/-1; text-align: center; padding: 50px;">
+                    <i class="fas fa-spinner fa-spin fa-3x" style="color: var(--primary-color);"></i>
+                    <p style="margin-top: 15px;">Cargando momentos...</p>
+                </div>
             </div>
         </div>
-
-        <div id="gallery-grid" class="gallery-grid">
-            <!-- Images will be loaded here from Firebase -->
-            <div class="gallery-loading" style="grid-column: 1/-1; text-align: center; padding: 50px;">
-                <i class="fas fa-spinner fa-spin fa-3x" style="color: var(--primary-color);"></i>
-                <p style="margin-top: 15px;">Cargando momentos...</p>
-            </div>
-        </div>
-    </div>
+    </main>
 
     <!-- Footer -->
     <footer class="main-footer">
@@ -79,7 +87,7 @@
                     <h3>Colegio San Martin</h3>
                 </div>
                 <p>Institución educativa de gestión privada comprometida con la formación integral, equilibrando la
-                    excelencia académica con el desarrollo humano and social de nuestros estudiantes.</p>
+                    excelencia académica con el desarrollo humano y social de nuestros estudiantes.</p>
             </div>
             <div class="social-links-container">
                 <h3>Nuestras redes</h3>
