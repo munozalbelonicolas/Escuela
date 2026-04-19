@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 
 <head>
@@ -42,7 +42,6 @@
                     <li><a href="index-primaria.html">Inicio</a></li>
                     <li><a href="institucion-primaria.html" class="active">Institución</a></li>
                     <li><a href="galeria-primaria.html">Galeria</a></li>
-                    <li><a href="proyectos-primaria.html">Proyectos</a></li>
                     <li><a href="contacto-primaria.html">Contacto</a></li>
                 </ul>
             </nav>
@@ -60,15 +59,13 @@
                 <h1>Info Institucional</h1>
                 <p>Información útil para nuestra comunidad educativa</p>
             </div>
-        </section>
-
-        <section class="ideario-section">
+        </sec        <section class="ideario-section" aria-labelledby="ideario-title">
             <div class="container">
                 <div class="section-title">
-                    <h2>IDEARIO</h2>
+                    <h2 id="ideario-title">IDEARIO</h2>
                     <div class="title-line"></div>
                 </div>
-                <div>
+                <article>
                     <p><strong>Educamos y colaboramos en la formación de un ambiente sano y firme.</strong> Nuestras
                         normas
                         educativas, motivaciones interiores y metas finales están inspiradas en valores y principios.
@@ -100,52 +97,52 @@
                         basado en los valores de la libertad, paz, solidaridad, igualdad, respeto a la diversidad
                         cultural,
                         justicia, responsabilidad y bien común.</p>
-                </div>
+                </article>
             </div>
         </section>
 
-        <section class="ideario-section">
+        <section class="ideario-section" aria-labelledby="authorities-title">
             <div class="container">
                 <div class="section-title">
-                    <h2>Autoridades</h2>
+                    <h2 id="authorities-title">Autoridades</h2>
                     <div class="title-line"></div>
                 </div>
                 <div class="authorities-list">
-                    <div class="authority-item">
-                        <div class="authority-icon"></div>
+                    <article class="authority-item">
+                        <div class="authority-icon" aria-hidden="true"></div>
                         <div class="authority-info">
                             <h4><i class="fas fa-user-tie"></i> Representante Legal</h4>
                             <p>Armada, Susana.</p>
                         </div>
-                    </div>
-                    <div class="authority-item">
-                        <div class="authority-icon"></div>
+                    </article>
+                    <article class="authority-item">
+                        <div class="authority-icon" aria-hidden="true"></div>
                         <div class="authority-info">
                             <h4><i class="fas fa-user-tie"></i> Representante Legal</h4>
                             <p>Gonzalez, Mirtha.</p>
                         </div>
-                    </div>
-                    <div class="authority-item">
-                        <div class="authority-icon"></div>
+                    </article>
+                    <article class="authority-item">
+                        <div class="authority-icon" aria-hidden="true"></div>
                         <div class="authority-info">
                             <h4><i class="fas fa-user-graduate"></i> Directora</h4>
                             <p>Zanet, Valeria.</p>
                         </div>
-                    </div>
-                    <div class="authority-item">
-                        <div class="authority-icon"></div>
+                    </article>
+                    <article class="authority-item">
+                        <div class="authority-icon" aria-hidden="true"></div>
                         <div class="authority-info">
                             <h4><i class="fas fa-user-graduate"></i> Vice Directora</h4>
                             <p>Pari, Vanina.</p>
                         </div>
-                    </div>
-                    <div class="authority-item">
-                        <div class="authority-icon"></div>
+                    </article>
+                    <article class="authority-item">
+                        <div class="authority-icon" aria-hidden="true"></div>
                         <div class="authority-info">
                             <h4><i class="fas fa-user-edit"></i> Secretaria</h4>
                             <p>Lugones, Lorena.</p>
                         </div>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -153,10 +150,10 @@
         <div class="container">
             <div class="info-grid">
                 <!-- Uniform Section -->
-                <section class="uniform-section">
-                    <h2><i class="fas fa-tshirt"></i> Reglamento de Uniforme</h2>
+                <section class="uniform-section" aria-labelledby="uniform-title">
+                    <h2 id="uniform-title"><i class="fas fa-tshirt"></i> Reglamento de Uniforme</h2>
 
-                    <div class="uniform-list">
+                    <article class="uniform-list">
                         <h3>Uniformes para Secundario</h3>
                         <ul>
                             <li>Pollera o pantalón azul reglamentarios</li>
@@ -169,9 +166,9 @@
                             <li>Todo tipo de accesorios (bufandas, guantes, vinchas, colitas del pelo, etc.
                                 deben tener los colores institucionales)</li>
                         </ul>
-                    </div>
+                    </article>
 
-                    <div class="uniform-list">
+                    <article class="uniform-list">
                         <h3>Educación Física</h3>
                         <ul>
                             <li>Remera con logotipo reglamentario</li>
@@ -179,37 +176,39 @@
                             <li>Short azul con logotipo reglamentario</li>
                             <li>Zapatillas negras o blancas</li>
                         </ul>
-                    </div>
+                    </article>
 
-                    <div class="note-alert">
-                        <i class="fas fa-exclamation-circle"></i>
-                        IMPORTANTE: Todo debe tener el nombre del alumno, incluyendo el ABRIGO.
+                    <div class="note-alert" role="alert">
+                        <i class="fas fa-exclamation-circle" aria-hidden="true"></i>
+                        <strong>IMPORTANTE:</strong> Todo debe tener el nombre del alumno, incluyendo el ABRIGO.
                     </div>
                 </section>
 
                 <!-- Downloads Section -->
-                <aside class="downloads-section">
-                    <h2><i class="fas fa-file-pdf"></i> Descargas</h2>
+                <aside class="downloads-section" aria-labelledby="downloads-title">
+                    <h2 id="downloads-title"><i class="fas fa-file-pdf"></i> Descargas</h2>
 
 
                     <a href="../assets/download/reglamentointernoprimaria.pdf" download="reglamentointernoprimaria.pdf"
                         class="download-item">
                         <div class="download-info">
-                            <i class="far fa-file-pdf"></i>
+                            <i class="far fa-file-pdf" aria-hidden="true"></i>
                             <span>Reglamento Interno</span>
                         </div>
-                        <i class="fas fa-download download-btn"></i>
+                        <i class="fas fa-download download-btn" aria-label="Descargar PDF"></i>
                     </a>
 
                     <a href="../assets/download/primariamateriales2023.pdf" download="primariamateriales2023.pdf"
                         class="download-item">
                         <div class="download-info">
-                            <i class="far fa-file-pdf"></i>
+                            <i class="far fa-file-pdf" aria-hidden="true"></i>
                             <span>Lista de Materiales</span>
                         </div>
-                        <i class="fas fa-download download-btn"></i>
+                        <i class="fas fa-download download-btn" aria-label="Descargar PDF"></i>
                     </a>
                 </aside>
+            </div>
+        </div>
             </div>
         </div>
     </main>
